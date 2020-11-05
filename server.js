@@ -11,7 +11,11 @@ const port = process.env.PORT || 9000;
 
 //middlewares
 app.use(bodyParser.json());
-app.use(cors());
+
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  next();
+});
 
 //db config
 const mongoURI =
