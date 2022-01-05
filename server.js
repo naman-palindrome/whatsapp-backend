@@ -7,27 +7,16 @@ import mongoMessages from "./messageModel.js";
 
 //app config
 const app = express();
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 8080;
 
 //middlewares
 app.use(bodyParser.json());
-app.use(function (req, res, next) {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "X-Requested-With, Authorization, x-auth-token, content-type"
-  );
-  res.setHeader("Access-Control-Allow-Credentials", false);
-  next();
-});
-
 app.use(cors());
 
 //db config
 const mongoURI =
   "mongodb+srv://admin:admin@cluster0.jcum7.mongodb.net/whatsappDb?retryWrites=true&w=majority";
-mongoose.connect(mongoURI, {
+mongoose.connect(mongoURI,{
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
